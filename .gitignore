@@ -75,6 +75,8 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+*.db
+seed_data.py
 
 *.tsbuildinfo
 .vscode
