@@ -1,6 +1,5 @@
-from sqlalchemy import Column, Integer, String, Text, Float, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, Float, DateTime, ForeignKey, func
 from sqlalchemy.orm import relationship
-import datetime
 from ..database import Base
 
 
@@ -10,9 +9,9 @@ class Product(Base):
     name = Column(String, nullable=False, index=True)
     description = Column(Text)
     price = Column(Float, nullable=False)
-    category_id = Column(Integer, ForeignKey("products.id"), nullable=False)
+    category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
     image_url = Column(String)
-    create_at = Column(DateTime, default=datetime.timezone.utc)
+    create_at = Column(DateTime, default=func.now())
 
     category = relationship("Category", back_populates="products")
 
