@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional
-import datetime
+from datetime import datetime
 from .category import CategoryResponse
 
 
@@ -8,8 +8,8 @@ class ProductBase(BaseModel):
     name: str = Field(..., min_length=5, max_length=100, description="Product name")
     description: Optional[str] = Field(None, description="Product description")
     price: float = Field(..., gt=0, description="Product price")
-    category_id = Field(..., description="Category id")
-    image_url = Optional[str] = Field(None, description="Product image url")
+    category_id: int = Field(..., description="Category id")
+    image_url: Optional[str] = Field(None, description="Product image url")
 
 
 class ProductCreate(ProductBase):
