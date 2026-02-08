@@ -18,5 +18,5 @@ def get_categories(db: Session = Depends(get_db)):
     "/{category_id}", response_model=CategoryResponse, status_code=status.HTTP_200_OK
 )
 def get_category_by_id(category_id: int, db: Session = Depends(get_db)):
-    service = CategoryService
+    service = CategoryService(db)
     return service.get_category_by_id(category_id)
