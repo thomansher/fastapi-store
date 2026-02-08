@@ -41,7 +41,7 @@ class ProductService:
         products_response = [
             ProductResponse.model_validate(product) for product in products
         ]
-        return ProductListResponse.model_validate(
+        return ProductListResponse(
             products=products_response, total=len(products_response)
         )
 
